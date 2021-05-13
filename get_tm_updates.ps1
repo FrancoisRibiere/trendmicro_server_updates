@@ -1,8 +1,9 @@
 <#	
 	.NOTES
 	===========================================================================
-	 Created on:   	24/01/2021
+	 Created on:   	01/24/2021
 	 Created by:   	François Ribière
+	 Modified on:   05/13/2021  -> keep server.ini file to download path
 	 Organization: 	na
 	 Filename:     	Get_TM_Updates.ps1
 	===========================================================================
@@ -88,9 +89,8 @@ $WebClient = ouvertureProxy
 
 ### Récupération du fichier des listes de signatures 
 # Fichier temporaire 
-$tempFileIniSig =  $(New-TemporaryFile).FullName
+$tempFileIniSig =  $output_dir\server.ini
 downloadfile "$sourceIniSig" "$tempFileIniSig" $WebClient
-
 
 ### Parcours du fichier de liste des signatures, et téléchargement (répertoire + zip + sha)
 
